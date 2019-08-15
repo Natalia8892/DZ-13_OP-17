@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- a[href="https://google.com"][title=$]{Google}*5 -->
+
+    <a href="https://google.com" title="1">Google</a>
+    <a href="https://google.com" title="2">Google</a>
+    <a href="https://google.com" title="3">Google</a>
+    <a href="https://google.com" title="4">Google</a>
+    <a href="https://google.com" title="5">Google</a>
+    <script>
+
+        let preventDef = () => {
+            [...document.getElementsByTagName('a')].forEach((element) => element.onclick = (event) => {
+                event.preventDefault();
+                let change = () => {
+                    if (event.detail === 3) { return false };
+                    event.target.innerHTML += " " + "(" + event.target.href + ")";
+                }
+                change();
+            });
+        };
+        preventDef();
+
+    </script>
+
+</body>
+
+</html>
