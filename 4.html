@@ -16,12 +16,13 @@
     <a href="https://google.com" title="3">Google</a>
     <a href="https://google.com" title="4">Google</a>
     <a href="https://google.com" title="5">Google</a>
-
     <script>
+
         let preventDef = () => {
             [...document.getElementsByTagName('a')].forEach((element) => element.onclick = (event) => {
                 event.preventDefault();
                 let change = () => {
+                    if (event.detail === 3) { return false };
                     event.target.innerHTML += " " + "(" + event.target.href + ")";
                 }
                 change();
@@ -30,6 +31,7 @@
         preventDef();
 
     </script>
+
 </body>
 
 </html>
